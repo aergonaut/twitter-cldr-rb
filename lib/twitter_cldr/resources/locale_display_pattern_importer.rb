@@ -57,9 +57,13 @@ module TwitterCldr
             %w[localePattern localeSeparator localeKeyTypePattern].each do |key|
               elem = node.xpath(key).first
               next unless elem
-              result[key.to_sym] = elem.content
+              result[underscore(key).to_sym] = elem.content
             end
           end
+        end
+
+        def underscore(str)
+          str.gsub(/(.)([A-Z])/, '\1_\2').downcase
         end
 
         def doc
