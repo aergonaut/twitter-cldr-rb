@@ -54,9 +54,11 @@ module TwitterCldr
 
         def locale_display_pattern
           doc.xpath('//ldml/localeDisplayNames/localeDisplayPattern').each_with_object({}) do |node, result|
-            result[:locale_pattern] = node.xpath('localePattern').text
-            result[:locale_separator] = node.xpath('localeSeparator').text
-            result[:locale_key_type_pattern] = node.xpath('localeKeyTypePattern').text
+            %w[localePattern localeSeparator localeKeyTypePattern].each do |key|
+              elem = node.xpath(key).first
+              next unless elem
+              result[key.to_sym] = elem.content
+            end
           end
         end
 
