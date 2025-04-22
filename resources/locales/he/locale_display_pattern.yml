@@ -1,0 +1,6 @@
+--- 
+:he: 
+  :locale_display_pattern: 
+    :localeKeyTypePattern: "{0}:‏ {1}"
+    :localePattern: "{0} ({1})"
+    :localeSeparator: "{0}, {1}"
